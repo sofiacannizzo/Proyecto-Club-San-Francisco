@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles Socios</title>
+</head>
+<body>
+    <h2>Detalle socio:</h2>
+    <p>Nombre: {{socio.nombre}}</p>
+    <p>Apellido: {{socio.apellido}}</p>
+    <p>Edad: {{socio.edad}}</p>
+    <p>Deportes: {{socio.deportes}}</p>
+    <p>Email: {{socio.email}}</p>
+    <a href="{% url 'socios' %}">Regresar a lista socios</a>
+</body>
+</html>

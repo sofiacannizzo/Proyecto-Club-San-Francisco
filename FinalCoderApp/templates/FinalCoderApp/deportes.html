@@ -1,0 +1,80 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Deportes
+{%endblock%}
+
+{%block contenidoPagina%}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Nuestros deportes:</h1>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-12">
+
+                {%for msg in messages%}
+                  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <strong>Hey!</strong> {{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {%endfor%}
+                
+                <form class="d-flex my-2 my-lg-0" action="" method="post">
+                    
+                    {% csrf_token %}
+                    <input class="flex-grow-0 form-control mr-sm-2" type="search" name="search" placeholder="Buscar por apellido/deporte" aria-label="Search">
+                    <button class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" type="submit"> <i class="bi bi-search"></i> Buscar</button>
+                    {% if user.is_staff %}
+                    <a class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" href="{% url 'crear_deporte' %}"> <i class="bi bi-plus-lg"></i> Crear deporte</a>
+                    {%endif%}
+                </form>
+            </div>
+        </div>
+        <br>
+        <h4>Resultados
+            {% if search %}
+                para "{{busqueda}}":
+            {% else %}
+                totales:
+            {% endif %}
+        </h4>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 table-responsive">
+                <table class="table table-theme">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Deporte</th>
+                            <th scope="col">Profesor</th>
+                            <th scope="col">Horario</th>
+                            {% if user.is_staff %}
+                            <th scope="col">Acciones</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for deporte in deportes %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{deporte.deporte}}</td>
+                                <td>{{deporte.profesor}}</td>
+                                <td>{{deporte.horario}}</td>
+                                {% if user.is_staff %}
+                                <td>
+                                    <a href="{% url 'editar_deporte' deporte.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'eliminar_deporte' deporte.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                    <a href="{% url 'deporte_detail' deporte.id %}" class="text-success badge badge-success text-decoration-none"> <i class="bi bi-search"></i> Ver</a>
+                                </td>
+                                {%endif%}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

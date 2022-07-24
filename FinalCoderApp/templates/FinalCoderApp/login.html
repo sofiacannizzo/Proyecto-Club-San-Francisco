@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Login - Club San Francisco
+{%endblock%}
+
+{%block contenidoPagina%}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Inicia sesión para ver mas informacion del club</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

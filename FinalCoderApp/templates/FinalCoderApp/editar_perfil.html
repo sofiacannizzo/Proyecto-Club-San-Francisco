@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Editar Perfil - Club San Francisco
+{%endblock%}
+
+{%block contenidoPagina%}
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Editar Perfil</h1>
+        <br>
+        <h2>Estás editando al usuario "{{user.username}}":</h2>
+        <p></p>
+        <form enctype="multipart/form-data" action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+</section>
+{%comment%}
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2>Estás editando al usuario "{{user.username}}":</h2>
+                <p></p>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{%endcomment%}
+{% endblock %}

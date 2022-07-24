@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Inicio - Club San Francisco
+{%endblock%}
+
+{%block contenidoPagina%}
+        <!-- Header - set the background image for the header in the line below-->
+        <header class="py-5 bg-image-full" style="background-image: url('https://ambientesdigital.com/wp-content/uploads/2018/08/cancha-la-doce-all-arquitectura-marcos-betanzos-05.jpg')">
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgCfTHSgUWOpUxlaASOglFBQFORi3vJ9A4HwunZPq4rY1-zNNeGeqOGfjU6--ZcX3BvvQ&usqp=CAU" alt="..." />
+                <h1 class="text-white fs-3 fw-bolder"></h1>
+                <p class="text-white-50 mb-0"></p>
+            </div>
+        </header>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+
+                        {%for msg in messages%}
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <strong>Hey!</strong> {{msg}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {%endfor%}
+
+                        <div class="title">
+                            <h2><a class="nav-link" href="{% url 'about' %}"><i class="bi bi-house-heart-fill"></i>Sobre Nosotros</a></h2>
+                        <p class="lead">Fundado en el año 1987 y con mas de 30 años de trayectoria el Club San Francisco sigue abriendo sus puertas a los futuros deportistas de elite.</p>
+                        <p class="mb-0">El club sigue en pie gracias a sus cientos deportistas y las familias detras de ellos, gracias a sus dirigentes y a la gente que nos apoya y a nuestra hinchada!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Image element - set the background image for the header in the line below-->
+        <div class="py-5 bg-image-full" style="background-image: url('https://img.freepik.com/foto-gratis/collage-deporte-hecho-deportistas-dibujo-colores-fluidos-brillantes-aislados-pared-blanca-estudio_489646-1766.jpg?w=2000')">
+            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+            <div style="height: 20rem"></div>
+        </div>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="title">
+                        <h2>Instalaciones</h2>
+                        <p class="lead">El Club San Francisco cuenta con multiples instalaciones, desde canchas de futbol y hockey hasta piletas de natacion. Esta es una lista:</p>
+                        <p class="mb-0">Canchas de tenis, Canchas de futbol, Cancha de basquet, Pista de patinaje artistico, Salon de gimnasia artistica, Pileta de natación y Canchas de hockey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

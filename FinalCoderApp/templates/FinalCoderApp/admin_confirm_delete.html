@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Administrador</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        ¿Está seguro que desea eliminar a: {{administrador.nombre}} {{administrador.apellido}}, {{administrador.puesto}}?
+        <input type="submit" value="Sí, Eliminar.">
+        <a href = "{% url 'administracion' %}" class='btn btn-default'>Cancelar</a>
+    </form>
+</body>
+</html>
